@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<!--
+   ______                            __
+  / ____/___  ____ ___  ____  __  __/ /____  _____
+ / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
+\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
+                    /_/
+        Created with Perplexity Computer
+        https://www.perplexity.ai/computer
+-->
+
+<!-- Perplexity Computer Attribution — SEO Meta Tags -->
+<meta name="generator" content="Perplexity Computer">
+<meta name="author" content="Perplexity Computer">
+<meta property="og:see_also" content="https://www.perplexity.ai/computer">
+<link rel="author" href="https://www.perplexity.ai/computer">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RiskGuard — Проверка контрагентов для важных сделок</title>
+<meta name="description" content="RiskGuard помогает проверить работодателя, подрядчика или автодилера перед важной сделкой. Риск-аналитика контрагентов для частных лиц.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="RiskGuard — Проверка контрагентов для важных сделок">
+<meta property="og:description" content="Проверьте надёжность компании перед важной сделкой: работодатель, подрядчик, автодилер.">
+<meta property="og:type" content="website">
+
+<!-- Tailwind CSS v3 CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          primary: {
+            50:  '#eff6ff',
+            100: '#dbeafe',
+            200: '#bfdbfe',
+            300: '#93c5fd',
+            400: '#60a5fa',
+            500: '#3b82f6',
+            600: '#2563eb',
+            700: '#1d4ed8',
+            800: '#1e40af',
+            900: '#1e3a5f',
+            950: '#172554',
+          },
+          slate: {
+            50:  '#f8fafc',
+            100: '#f1f5f9',
+            200: '#e2e8f0',
+            300: '#cbd5e1',
+            400: '#94a3b8',
+            500: '#64748b',
+            600: '#475569',
+            700: '#334155',
+            800: '#1e293b',
+            900: '#0f172a',
+            950: '#020617',
+          }
+        },
+        fontFamily: {
+          sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        },
+      }
+    }
+  }
+</script>
+
+<!-- Inter font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- ============================================
+     ЯНДЕКС.МЕТРИКА — Вставьте код счётчика ниже
+     ============================================ -->
+<!-- 
+<script type="text/javascript">
+  (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+  m[i].l=1*new Date();
+  for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r)return;}
+  k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+  (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+  ym(XXXXXXXX, "init", {
+    clickmap:true,
+    trackLinks:true,
+    accurateTrackBounce:true,
+    webvisor:true
+  });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/XXXXXXXX" style="position:absolute;left:-9999px;" alt="" /></div></noscript>
+-->
+
+<!-- ============================================
+     GOOGLE ANALYTICS — Вставьте код ниже
+     ============================================ -->
+<!--
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+-->
+
+<style>
+  /* =============================================
+     Встроенные стили для анимаций и кастомных элементов
+     ============================================= */
+
+  /* Плавные переходы между экранами */
+  .screen {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .screen.hidden {
+    display: none;
+  }
+  .screen.fade-in {
+    animation: fadeIn 0.4s ease forwards;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Анимация пульсации для кнопки CTA */
+  @keyframes pulse-ring {
+    0%   { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4); }
+    70%  { box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+  }
+  .pulse-cta:hover {
+    animation: pulse-ring 1.5s infinite;
+  }
+
+  /* Ховер-эффект для карточек сценариев */
+  .scenario-card {
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.25s ease;
+  }
+  .scenario-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px -8px rgba(37, 99, 235, 0.15);
+    border-color: #3b82f6;
+  }
+
+  /* Стили для поля ввода с ошибкой */
+  .input-error {
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+  }
+
+  /* Smooth scroll */
+  html { scroll-behavior: smooth; }
+
+  /* Фон-градиент для hero */
+  .hero-gradient {
+    background: linear-gradient(135deg, #eff6ff 0%, #f8fafc 50%, #e0f2fe 100%);
+  }
+
+  /* Анимация появления элементов при загрузке */
+  .stagger-1 { animation: fadeIn 0.5s ease 0.1s both; }
+  .stagger-2 { animation: fadeIn 0.5s ease 0.2s both; }
+  .stagger-3 { animation: fadeIn 0.5s ease 0.3s both; }
+  .stagger-4 { animation: fadeIn 0.5s ease 0.4s both; }
+
+  /* Скрыть стрелки в числовых полях */
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+</style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+
+  <!-- =============================================
+       HEADER — Навигация с логотипом
+       ============================================= -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <!-- Логотип SVG: щит с буквой R -->
+      <a href="#" class="flex items-center gap-2.5 group" aria-label="RiskGuard — на главную">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Щит -->
+          <path d="M18 2L4 8v10c0 9.33 5.97 18.06 14 20 8.03-1.94 14-10.67 14-20V8L18 2z" fill="#2563eb" opacity="0.12"/>
+          <path d="M18 3.5L5.5 8.8v9.2c0 8.55 5.47 16.56 12.5 18.35C25.03 34.56 30.5 26.55 30.5 18V8.8L18 3.5z" stroke="#2563eb" stroke-width="1.8" fill="none"/>
+          <!-- Буква R -->
+          <text x="18" y="23" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-weight="700" font-size="16" fill="#2563eb">R</text>
+        </svg>
+        <span class="text-lg font-bold text-slate-900 tracking-tight">Risk<span class="text-primary-600">Guard</span></span>
+      </a>
+      <nav class="hidden sm:flex items-center gap-6 text-sm text-slate-500">
+        <span class="text-slate-400">Проверка контрагентов</span>
+      </nav>
+    </div>
+  </header>
+
+  <!-- =============================================
+       MAIN — Основной контент (три экрана)
+       ============================================= -->
+  <main class="flex-1">
+
+    <!-- ========== ЭКРАН 1: Выбор сценария ========== -->
+    <section id="screen-scenario" class="screen fade-in">
+
+      <!-- Hero-секция с ценностным предложением -->
+      <div class="hero-gradient py-16 sm:py-24 px-4 sm:px-6">
+        <div class="max-w-3xl mx-auto text-center">
+          <div class="stagger-1 inline-flex items-center gap-2 bg-primary-100 text-primary-700 text-xs font-semibold px-3 py-1.5 rounded-full mb-6">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1.167l1.62 3.283 3.623.529-2.622 2.555.619 3.609L7 9.452l-3.24 1.691.619-3.609L1.757 4.98l3.623-.53L7 1.167z" fill="currentColor"/></svg>
+            Бесплатная проверка при запуске
+          </div>
+          <h1 class="stagger-2 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight tracking-tight mb-5">
+            Проверьте контрагента<br class="hidden sm:block"> перед важной сделкой
+          </h1>
+          <p class="stagger-3 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed mb-4">
+            RiskGuard анализирует юридическую надёжность компаний — чтобы вы принимали решения на основе фактов, а не на доверии. Проверка работодателя, подрядчика или продавца за&nbsp;2&nbsp;минуты.
+          </p>
+          <p class="stagger-4 text-sm text-slate-400 mb-10">Выберите сценарий проверки ↓</p>
+        </div>
+      </div>
+
+      <!-- Карточки сценариев -->
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 -mt-4 pb-20">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+
+          <!-- Карточка 1: Проверка работодателя -->
+          <button
+            onclick="selectScenario('employer')"
+            class="scenario-card bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+            aria-label="Проверка работодателя"
+            data-scenario="employer"
+          >
+            <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mb-4">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2"/>
+                <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/>
+                <line x1="12" y1="12" x2="12" y2="12.01"/>
+              </svg>
+            </div>
+            <h3 class="text-base font-semibold text-slate-900 mb-1.5">Проверка работодателя</h3>
+            <p class="text-sm text-slate-500 leading-relaxed">Узнайте, надёжна ли компания, в которую вы устраиваетесь на работу</p>
+          </button>
+
+          <!-- Карточка 2: Проверка подрядчика -->
+          <button
+            onclick="selectScenario('contractor')"
+            class="scenario-card bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+            aria-label="Проверка подрядчика"
+            data-scenario="contractor"
+          >
+            <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mb-4">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 20h20"/>
+                <path d="M5 20V10l7-5 7 5v10"/>
+                <path d="M9 20v-5h6v5"/>
+                <path d="M10 10h4"/>
+              </svg>
+            </div>
+            <h3 class="text-base font-semibold text-slate-900 mb-1.5">Проверка подрядчика</h3>
+            <p class="text-sm text-slate-500 leading-relaxed">Ремонтная бригада, строители, отделочники — проверьте перед оплатой</p>
+          </button>
+
+          <!-- Карточка 3: Проверка автодилера -->
+          <button
+            onclick="selectScenario('car_dealer')"
+            class="scenario-card bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+            aria-label="Проверка автодилера"
+            data-scenario="car_dealer"
+          >
+            <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mb-4">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 17h14"/>
+                <path d="M3 12l2-5h14l2 5"/>
+                <rect x="3" y="12" width="18" height="5" rx="1"/>
+                <circle cx="7" cy="17" r="2"/>
+                <circle cx="17" cy="17" r="2"/>
+              </svg>
+            </div>
+            <h3 class="text-base font-semibold text-slate-900 mb-1.5">Проверка автодилера</h3>
+            <p class="text-sm text-slate-500 leading-relaxed">Автосалон или частный продавец авто с пробегом — убедитесь в надёжности</p>
+          </button>
+
+        </div>
+
+        <!-- Блок ценности -->
+        <div class="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+          <div>
+            <div class="text-2xl font-bold text-primary-600 mb-1">15+</div>
+            <div class="text-sm text-slate-500">источников данных</div>
+          </div>
+          <div>
+            <div class="text-2xl font-bold text-primary-600 mb-1">2 мин</div>
+            <div class="text-sm text-slate-500">среднее время проверки</div>
+          </div>
+          <div>
+            <div class="text-2xl font-bold text-primary-600 mb-1">100%</div>
+            <div class="text-sm text-slate-500">открытые данные</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ЭКРАН 2: Ввод ИНН ========== -->
+    <section id="screen-inn" class="screen hidden">
+      <div class="max-w-lg mx-auto px-4 sm:px-6 py-16 sm:py-24">
+
+        <!-- Навигация назад -->
+        <button onclick="goBack('scenario')" class="flex items-center gap-1.5 text-sm text-slate-400 hover:text-primary-600 transition-colors mb-8 focus:outline-none">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 12L6 8l4-4"/>
+          </svg>
+          Назад к выбору сценария
+        </button>
+
+        <!-- Иконка выбранного сценария -->
+        <div id="inn-scenario-badge" class="inline-flex items-center gap-2 bg-primary-50 text-primary-700 text-xs font-medium px-3 py-1.5 rounded-full mb-6"></div>
+
+        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-3">Введите ИНН компании</h2>
+        <p class="text-sm text-slate-500 mb-8 leading-relaxed">
+          Укажите ИНН юридического лица (10 цифр) или индивидуального предпринимателя (12 цифр) для начала проверки.
+        </p>
+
+        <form id="inn-form" onsubmit="submitInn(event)" novalidate>
+          <label for="inn-input" class="block text-sm font-medium text-slate-700 mb-2">ИНН организации</label>
+          <div class="relative">
+            <input
+              type="text"
+              id="inn-input"
+              inputmode="numeric"
+              pattern="[0-9]*"
+              maxlength="12"
+              placeholder="Например: 7707083893"
+              autocomplete="off"
+              class="w-full h-12 px-4 pr-12 rounded-xl border border-slate-300 bg-white text-slate-900 text-base placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all"
+              aria-describedby="inn-error"
+            >
+            <!-- Иконка поиска -->
+            <div class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="8" cy="8" r="5.5"/>
+                <path d="M15.5 15.5L12 12"/>
+              </svg>
+            </div>
+          </div>
+          <!-- Сообщение об ошибке -->
+          <p id="inn-error" class="text-xs text-red-500 mt-2 hidden" role="alert"></p>
+
+          <button
+            type="submit"
+            id="inn-submit-btn"
+            class="pulse-cta w-full h-12 mt-5 bg-primary-600 hover:bg-primary-700 active:bg-primary-800 text-white text-sm font-semibold rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            Начать проверку
+          </button>
+        </form>
+
+        <p class="text-xs text-slate-400 mt-5 text-center leading-relaxed">
+          Мы используем только открытые источники данных: ФНС, ЕГРЮЛ, судебные базы и&nbsp;др.
+        </p>
+      </div>
+    </section>
+
+    <!-- ========== ЭКРАН 3: Сбор email ========== -->
+    <section id="screen-email" class="screen hidden">
+      <div class="max-w-lg mx-auto px-4 sm:px-6 py-16 sm:py-24">
+
+        <!-- Навигация назад -->
+        <button onclick="goBack('inn')" class="flex items-center gap-1.5 text-sm text-slate-400 hover:text-primary-600 transition-colors mb-8 focus:outline-none">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 12L6 8l4-4"/>
+          </svg>
+          Назад
+        </button>
+
+        <!-- Состояние: форма email (до отправки) -->
+        <div id="email-form-state">
+          <!-- Иконка «в разработке» -->
+          <div class="w-14 h-14 bg-amber-100 rounded-2xl flex items-center justify-center mb-6">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#d97706" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="14" cy="14" r="11"/>
+              <path d="M14 9v5l3 3"/>
+            </svg>
+          </div>
+
+          <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-3">Сервис находится в&nbsp;разработке</h2>
+          <p class="text-sm text-slate-600 leading-relaxed mb-8">
+            Ваш запрос учтён. Оставьте email, и мы пришлём вам уведомление о запуске и отчёт по интересующей компании.
+          </p>
+
+          <form id="email-form" onsubmit="submitEmail(event)" novalidate>
+            <label for="email-input" class="block text-sm font-medium text-slate-700 mb-2">Ваш email</label>
+            <input
+              type="email"
+              id="email-input"
+              placeholder="name@example.com"
+              autocomplete="email"
+              class="w-full h-12 px-4 rounded-xl border border-slate-300 bg-white text-slate-900 text-base placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all"
+              aria-describedby="email-error"
+            >
+            <p id="email-error" class="text-xs text-red-500 mt-2 hidden" role="alert"></p>
+
+            <button
+              type="submit"
+              id="email-submit-btn"
+              class="pulse-cta w-full h-12 mt-5 bg-primary-600 hover:bg-primary-700 active:bg-primary-800 text-white text-sm font-semibold rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Отправить
+            </button>
+          </form>
+        </div>
+
+        <!-- Состояние: благодарность (после отправки) -->
+        <div id="email-success-state" class="hidden text-center">
+          <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 16l5 5 9-9"/>
+            </svg>
+          </div>
+          <h2 class="text-2xl font-bold text-slate-900 mb-3">Спасибо!</h2>
+          <p class="text-sm text-slate-600 leading-relaxed mb-6">
+            Мы отправим вам уведомление о запуске сервиса и персональный отчёт по указанной компании.
+          </p>
+          <button
+            onclick="resetToStart()"
+            class="inline-flex items-center gap-2 text-sm font-medium text-primary-600 hover:text-primary-700 transition-colors focus:outline-none"
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 12L6 8l4-4"/>
+            </svg>
+            Проверить ещё одну компанию
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =============================================
+       FOOTER
+       ============================================= -->
+  <footer class="border-t border-slate-200 bg-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
+      <span>© 2026 RiskGuard. Все права защищены.</span>
+      <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer" class="hover:text-slate-600 transition-colors">
+        Created with Perplexity Computer
+      </a>
+    </div>
+  </footer>
+
+  <!-- =============================================
+       JAVASCRIPT — Логика приложения
+       ============================================= -->
+  <script>
+    /* =============================================
+       Состояние приложения
+       ============================================= */
+    const appState = {
+      scenario: null,      // 'employer' | 'contractor' | 'car_dealer'
+      inn: null,           // строка ИНН
+      email: null,         // email пользователя
+    };
+
+    /* Названия сценариев для отображения и отправки */
+    const scenarioLabels = {
+      employer:    'Проверка работодателя',
+      contractor:  'Проверка подрядчика',
+      car_dealer:  'Проверка автодилера',
+    };
+
+    /* =============================================
+       URL Google Apps Script — ЗАМЕНИТЕ НА СВОЙ
+       =============================================
+       Инструкция по настройке — в файле block3_instructions.md
+    */
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID_HERE/exec';
+
+    /* =============================================
+       Навигация между экранами
+       ============================================= */
+
+    /**
+     * Показывает указанный экран, скрывая остальные.
+     * @param {string} screenId — ID экрана без префикса 'screen-'
+     */
+    function showScreen(screenId) {
+      document.querySelectorAll('.screen').forEach(s => {
+        s.classList.add('hidden');
+        s.classList.remove('fade-in');
+      });
+      const target = document.getElementById('screen-' + screenId);
+      target.classList.remove('hidden');
+      // Триггерим reflow для повторной анимации
+      void target.offsetWidth;
+      target.classList.add('fade-in');
+      // Скроллим наверх
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /** Кнопка «Назад» — возвращает к указанному экрану */
+    function goBack(screenId) {
+      showScreen(screenId);
+    }
+
+    /** Сброс к начальному экрану */
+    function resetToStart() {
+      appState.scenario = null;
+      appState.inn = null;
+      appState.email = null;
+      document.getElementById('inn-input').value = '';
+      document.getElementById('email-input').value = '';
+      document.getElementById('email-form-state').classList.remove('hidden');
+      document.getElementById('email-success-state').classList.add('hidden');
+      showScreen('scenario');
+    }
+
+    /* =============================================
+       ЭКРАН 1: Выбор сценария
+       ============================================= */
+
+    /**
+     * Обработчик клика по карточке сценария.
+     * Сохраняет выбор и переходит к экрану ввода ИНН.
+     * @param {string} scenario — ключ сценария
+     */
+    function selectScenario(scenario) {
+      appState.scenario = scenario;
+
+      // Обновляем бейдж на экране ИНН
+      document.getElementById('inn-scenario-badge').textContent = scenarioLabels[scenario];
+
+      // Отслеживание клика по сценарию
+      trackEvent('scenario_selected', { scenario: scenario, label: scenarioLabels[scenario] });
+
+      showScreen('inn');
+      // Фокус на поле ИНН
+      setTimeout(() => document.getElementById('inn-input').focus(), 400);
+    }
+
+    /* =============================================
+       ЭКРАН 2: Валидация и отправка ИНН
+       ============================================= */
+
+    /**
+     * Валидация ИНН: только цифры, 10 или 12 символов.
+     * @param {string} inn
+     * @returns {string|null} — текст ошибки или null
+     */
+    function validateInn(inn) {
+      if (!inn) return 'Введите ИНН';
+      if (!/^\d+$/.test(inn)) return 'ИНН должен содержать только цифры';
+      if (inn.length !== 10 && inn.length !== 12) return 'ИНН должен содержать 10 или 12 цифр';
+      return null;
+    }
+
+    /**
+     * Обработчик отправки формы ИНН.
+     * Валидирует и переходит к экрану email.
+     */
+    function submitInn(event) {
+      event.preventDefault();
+
+      const input = document.getElementById('inn-input');
+      const errorEl = document.getElementById('inn-error');
+      const inn = input.value.trim();
+      const error = validateInn(inn);
+
+      if (error) {
+        errorEl.textContent = error;
+        errorEl.classList.remove('hidden');
+        input.classList.add('input-error');
+        input.focus();
+        return;
+      }
+
+      // Убираем ошибку
+      errorEl.classList.add('hidden');
+      input.classList.remove('input-error');
+
+      appState.inn = inn;
+
+      // Отслеживание ввода ИНН
+      trackEvent('inn_submitted', { inn_length: inn.length, scenario: appState.scenario });
+
+      showScreen('email');
+      setTimeout(() => document.getElementById('email-input').focus(), 400);
+    }
+
+    /* Фильтрация ввода — только цифры */
+    document.addEventListener('DOMContentLoaded', function() {
+      const innInput = document.getElementById('inn-input');
+      innInput.addEventListener('input', function() {
+        this.value = this.value.replace(/\D/g, '');
+        // Убираем ошибку при вводе
+        document.getElementById('inn-error').classList.add('hidden');
+        this.classList.remove('input-error');
+      });
+    });
+
+    /* =============================================
+       ЭКРАН 3: Валидация email и отправка данных
+       ============================================= */
+
+    /**
+     * Валидация email.
+     * @param {string} email
+     * @returns {string|null}
+     */
+    function validateEmail(email) {
+      if (!email) return 'Введите email';
+      // Простая, но надёжная проверка формата
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!re.test(email)) return 'Введите корректный email';
+      return null;
+    }
+
+    /**
+     * Обработчик отправки формы email.
+     * Валидирует, отправляет данные в Google Sheets и показывает благодарность.
+     */
+    async function submitEmail(event) {
+      event.preventDefault();
+
+      const input = document.getElementById('email-input');
+      const errorEl = document.getElementById('email-error');
+      const submitBtn = document.getElementById('email-submit-btn');
+      const email = input.value.trim();
+      const error = validateEmail(email);
+
+      if (error) {
+        errorEl.textContent = error;
+        errorEl.classList.remove('hidden');
+        input.classList.add('input-error');
+        input.focus();
+        return;
+      }
+
+      // Убираем ошибку
+      errorEl.classList.add('hidden');
+      input.classList.remove('input-error');
+
+      appState.email = email;
+
+      // Блокируем кнопку на время отправки
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Отправка...';
+
+      // Отслеживание email
+      trackEvent('email_submitted', { scenario: appState.scenario });
+
+      // Отправляем данные в Google Sheets
+      await sendToGoogleSheets();
+
+      // Показываем благодарственное сообщение
+      document.getElementById('email-form-state').classList.add('hidden');
+      document.getElementById('email-success-state').classList.remove('hidden');
+
+      // Восстанавливаем кнопку
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Отправить';
+    }
+
+    /* Убираем ошибку при вводе email */
+    document.addEventListener('DOMContentLoaded', function() {
+      const emailInput = document.getElementById('email-input');
+      emailInput.addEventListener('input', function() {
+        document.getElementById('email-error').classList.add('hidden');
+        this.classList.remove('input-error');
+      });
+    });
+
+    /* =============================================
+       Отправка данных в Google Sheets
+       через Google Apps Script Web App
+       ============================================= */
+
+    /**
+     * Отправляет собранные данные (сценарий, ИНН, email, timestamp)
+     * POST-запросом к Google Apps Script.
+     * 
+     * ВАЖНО: Замените GOOGLE_SCRIPT_URL на реальный URL вашего скрипта.
+     * Инструкция — в файле block3_instructions.md.
+     */
+    async function sendToGoogleSheets() {
+      const payload = {
+        scenario:  scenarioLabels[appState.scenario] || appState.scenario,
+        inn:       appState.inn,
+        email:     appState.email,
+        timestamp: new Date().toISOString(),
+      };
+
+      try {
+        /* 
+         * Отправляем POST к Google Apps Script Web App.
+         * mode: 'no-cors' — для обхода CORS при использовании заглушки.
+         * При реальном деплое Apps Script рекомендуется настроить CORS
+         * и использовать mode: 'cors' для получения ответа.
+         */
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        console.log('✅ Данные отправлены:', payload);
+      } catch (err) {
+        // Не блокируем UX при ошибке отправки
+        console.warn('⚠️ Ошибка отправки данных:', err);
+        console.log('📦 Данные для ручной обработки:', payload);
+      }
+    }
+
+    /* =============================================
+       Аналитика — отслеживание событий
+       ============================================= */
+
+    /**
+     * Универсальная функция отслеживания событий.
+     * Отправляет событие в Яндекс.Метрику и Google Analytics (если подключены).
+     * 
+     * @param {string} eventName — название события
+     * @param {object} params   — дополнительные параметры
+     */
+    function trackEvent(eventName, params = {}) {
+      console.log('📊 Event:', eventName, params);
+
+      // Яндекс.Метрика — раскомментируйте и укажите номер счётчика
+      // if (typeof ym !== 'undefined') {
+      //   ym(XXXXXXXX, 'reachGoal', eventName, params);
+      // }
+
+      // Google Analytics (gtag.js) — раскомментируйте
+      // if (typeof gtag !== 'undefined') {
+      //   gtag('event', eventName, params);
+      // }
+    }
+  </script>
+
+</body>
+</html>
